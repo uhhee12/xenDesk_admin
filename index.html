@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>관리자</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+
+        <header>
+            <div>
+                <ul class="leftMenu">
+                    <!-- <li> <div class="menu"> <span class="menuIcon"></span> <span
+                    class="menuIcon"></span> <span class="menuIcon"></span> </div> </li> -->
+                    <li>
+                        <a href="#"><img src="images/logo.png" alt="로고"></a>
+                    </li>
+                    <li class="subMenuLi">
+                        선택<img src="images/arrow_03.png" class="arrowImg">
+                        <div class="hiddenMenu">
+                            <ul>
+                                <li>
+                                    <a href="#">VDI관리</a>
+                                </li>
+                                <li>
+                                    <a href="#">게시판관리</a>
+                                </li>
+                                <li>
+                                    <a href="#">사용자관리</a>
+                                </li>
+                                <li>
+                                    <a href="#">통계관리</a>
+                                </li>
+                                <li>
+                                    <a href="#">로그관리</a>
+                                </li>
+                                <li>
+                                    <a href="#">코드관리</a>
+                                </li>
+                                <li>
+                                    <a href="#">환경설정</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">PROXMOX 이동</a>
+                    </li>
+                    <li>
+                        <a href="#">사용자 포탈</a>
+                    </li>
+                </ul>
+                <ul class="rightMenu">
+                    <li>VDI 신청건수
+                        <span class="org_txt">7</span>건</li>
+                    <li><img src="images/person.png" alt="관리자 아이콘">
+                        <span class="name">최고수</span>관리자
+                    </li>
+                    <li>
+                        <span class="searchBtn">
+                            <a class="icon -search">
+                                <div class="circle">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="cross">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                        </span>
+                            
+                        <button type="" class="logeOutBtn">로그아웃</button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- 로그아웃 팝업 -->
+        <div class="modalWrap logeOutModal">
+            <div class="modalIner">
+                <p class="title">정말로 로그아웃을 하시겠습니까?</p>
+                <div class="contnet">
+                </div>
+                <div class="btnbox">
+                    <button type="" class="grayBtn">취소</button>
+                    <button type="" class="blueBtn" onClick="location.href='#'">확인</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="searchDiv">
+            <input type="text" placeholder="검색어를 입력해주세요.">
+            <label>검색</label>
+        </div>
+        <div class="container">
+            <div class="wrapper">
+                <div class="item box2">
+                    <p class="itemtitle">현재 접속자 수</p>
+                    <p class="num">
+                        <span class="counterup_obj">100</span>
+                        <span class="blueNum"><img src="images/upIcon.png">20</span>
+                    </p>
+                </div>
+                <div class="item box2">
+                    <p class="itemtitle">총 VDI 수</p>
+                    <p class="num counter">
+                        <span class="counterup_obj">82</span>
+                        <span class="grayNum">VDI(s)</span>
+                    </p>
+                </div>
+                <div class="item box1">
+                    <p class="itemtitle">신청 처리 전 건수</p>
+                    <p class="num counter">
+                        <span class="counterup_obj">10</span>
+                        <span class="grayNum">건</span>
+                    </p>
+                </div>
+                <div class="item box3">
+                    <p class="itemtitle">VDI 신청 통계</p>
+                    <div class="pieChart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <ul class="legend">
+                        <li>
+                            <span class="legends1"></span>VDI 생성(신규)</li>
+                        <li>
+                            <span class="legends2"></span>VDI 변경</li>
+                        <li>
+                            <span class="legends3"></span>VDI 초기화</li>
+                        <li>
+                            <span class="legends4"></span>VDI 반납</li>
+                        <li>
+                            <span class="legends5"></span>사용자 변경</li>
+                        <li>
+                            <span class="legends6"></span>재택근무 신청</li>
+                        <li>
+                            <span class="legends7"></span>프로그램 설치 신청</li>
+                    </ul>
+                </div>
+                <div class="item box2">
+                    <p class="itemtitle">VDI 상태 수</p>
+                    <p class="online"><img src="images/online.png" alt="온라인">Online
+                        <span>20</span></p>
+                    <p class="offline"><img src="images/offline.png" alt="오프라인">Offline
+                        <span>81</span></p>
+                </div>
+                <div class="item box2">
+                    <p class="itemtitle">당일 공용(재택)VDI 수</p>
+                    <p class="num">
+                        <span class="counterup_obj">4</span>
+                        <span class="grayNum">VDI(s)</span>
+                    </p>
+                </div>
+                <div class="item box4 boxNomargin">
+                    <p class="itemtitle">할당 가능한 공용(재택) VDI <a href="#" class="moreBtn">더보기</a></p>
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th>재택용 VDI 명</th>
+                                <th>할당상태</th>
+                                <th>최종 접속 일시</th>
+                                <th>최종 종료 일시</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MASTERIMAGE001</td>
+                                <td>
+                                    <span class="redTd">회수</span>
+                                </td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>2021.02.06. 12:00:21</td>
+                            </tr>
+                            <tr>
+                                <td>MASTERIMAGE001</td>
+                                <td>
+                                    <span class="redTd">회수</span>
+                                </td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>2021.02.06. 12:00:21</td>
+                            </tr>
+                            <tr>
+                                <td>MASTERIMAGE001</td>
+                                <td>
+                                    <span class="redTd">회수</span>
+                                </td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>2021.02.06. 12:00:21</td>
+                            </tr>
+                            <tr>
+                                <td>MASTERIMAGE001</td>
+                                <td>
+                                    <span class="redTd">회수</span>
+                                </td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>2021.02.06. 12:00:21</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="item box4">
+                    <p class="itemtitle">최근장애(Event)현황 <a href="#" class="moreBtn">더보기</a></p>
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th>장비명</th>
+                                <th>VDI IP</th>
+                                <th>발생시간</th>
+                                <th>이벤트 설명</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>VM0001</td>
+                                <td>000.000.00.00</td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>포트다운</td>
+                            </tr>
+                            <tr>
+                                <td>VM0001</td>
+                                <td>000.000.00.00</td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>연결 불안정</td>
+                            </tr>
+                            <tr>
+                                <td>VM0001</td>
+                                <td>000.000.00.00</td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>성능저하</td>
+                            </tr>
+                            <tr>
+                                <td>VM0001</td>
+                                <td>000.000.00.00</td>
+                                <td>2021.02.06 12:00:21</td>
+                                <td>접속장애</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="item box4 boxNomargin">
+                    <p class="itemtitle">장애신고통계</p>
+                    <div class="barChart">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+
+                <footer>Copyright ⓒ 2021 Xen Desk. All rights reserved</footer>
+            </div>
+        </div>
+
+
+        <script src="http://code.jquery.com/jquery-latest.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+        <script type="text/javascript" src="js/jquery.counterup.min.js" defer></script> <!-- 숫자 카운터  -->
+        <script type="text/javascript" src="js/waypoints.min.js" defer></script> <!-- 숫자 카운터  -->
+        <script type="text/jscript" src="js/common.js" defer></script>
+        <script type="text/javascript" src="js/chart.js" defer></script>
+    </body>
+
+</html>
